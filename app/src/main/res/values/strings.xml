@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">See Sort</string>
+    <string name="sort_icon">Sort icon</string>
+    <string name="main_title">See Sort</string>
+    <string name="bubble_sort">Bubble Sort</string>
+    <string name="selection_sort">Selection Sort</string>
+    <string name="insertion_sort">Insertion Sort</string>
+    <string name="list_size">List Size:</string>
+    <string name="random">Random</string>
+    <string name="sort">Sort</string>
+    <string name="speed">Speed:</string>
+</resources>

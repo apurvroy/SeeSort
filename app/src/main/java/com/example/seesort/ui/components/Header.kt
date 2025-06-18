@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -16,16 +15,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.seesort.R
+import com.example.seesort.ui.theme.SeeSortTheme
 
 @Composable
 fun Header(
@@ -37,59 +32,44 @@ fun Header(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(15.dp),
+            .padding(horizontal = 24.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween // Ensures the row is spaced between
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Box(
-            modifier = Modifier
-                .weight(1f)
-                .wrapContentWidth(Alignment.CenterHorizontally)
+        Row(
+            modifier = Modifier.weight(1f),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            )
-            {
-                Box(
-                    modifier = Modifier
-                        .size(45.dp)
-                        .wrapContentSize()
-                ) {
-                    AnimatedIcon(
-                        animationResId = animResId, modifier = Modifier
-                            .fillMaxSize()
-                            .align(Alignment.Center)
-                    )
-                }
-                Text(
-                    text = headerText,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 32.sp,
-                    color = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.padding(8.dp),
-                    textAlign = TextAlign.Center,
-                    maxLines = 1,
-                )
-            }
-        }
-        if (isCancelAvailable) {
             Box(
                 modifier = Modifier
-                    .size(30.dp)
-                    .wrapContentSize(),
+                    .size(40.dp)
+                    .padding(end = 8.dp)
             ) {
-                IconButton(
-                    modifier = Modifier.fillMaxSize(),
-                    onClick = onCancelCLicked,
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_cancel),
-                        contentDescription = "Cancel icon",
-                    )
-                }
+                AnimatedIcon(
+                    animationResId = animResId,
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
+            Text(
+                text = headerText,
+                style = MaterialTheme.typography.headlineMedium,
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+            )
+        }
+
+        if (isCancelAvailable) {
+            IconButton(
+                onClick = onCancelCLicked,
+                modifier = Modifier.size(36.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_cancel),
+                    contentDescription = "Cancel",
+                    tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                )
             }
         }
     }
@@ -97,11 +77,11 @@ fun Header(
 
 @Preview
 @Composable
-fun previewHeader() {
-    MaterialTheme() {
+fun PreviewHeader() {
+    SeeSortTheme {
         Header(
-            headerText = stringResource(id = R.string.app_name),
-            animResId = R.drawable.ic_turtle,
+            headerText = "Bubble Sort",
+            animResId = R.drawable.ic_sort,
             isCancelAvailable = true
         )
     }

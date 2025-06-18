@@ -103,8 +103,8 @@ fun BubbleSortScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .verticalScroll(rememberScrollState()),
-
         ) {
         Spacer(modifier = Modifier.height(10.dp))
         Header(

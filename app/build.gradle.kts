@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.example.seesort"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.seesort"
@@ -46,7 +46,7 @@ android {
         dataBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
     packaging {
         resources {
@@ -96,6 +96,4 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
-kapt {
-    correctErrorTypes = true
-}
+
